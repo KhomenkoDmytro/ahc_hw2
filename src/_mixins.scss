@@ -1,0 +1,161 @@
+@mixin margin-center{
+  margin: 0 auto;
+}
+
+@mixin grid-inside($flags) {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 60px;
+    list-style: none;
+    width: fit-content;
+    @if $flags == 1{
+        grid-template: 1fr 1fr/ 1fr 1fr;
+        li {
+            img {
+                float: left;
+                margin-right: 5px;
+            }
+            &:nth-child(2n + 1) {
+                margin: {
+                    left: 131px;
+                }
+            }
+            &:nth-child(2n) {
+                margin: {
+                    right: 131px;
+                }
+            }
+        }
+    }
+    @else if $flags == 2{
+        grid-template: 1fr / 1fr;
+        li{
+            &:nth-child(2n + 1) {
+                margin: {
+                    left: 0;
+                }
+            }
+            &:nth-child(2n) {
+                margin: {
+                    right: 0;
+                }
+            }
+            img {
+                float: left;
+                margin-right: 5px;
+            }
+            .text{
+                display: block;
+            }
+        }
+    }
+    @else if $flags == 3{
+        grid-template: 1fr / 1fr;
+        margin-bottom: 15px;
+        li{
+            &:nth-child(2n + 1) {
+                margin: {
+                    left: 0;
+                }
+            }
+            &:nth-child(2n) {
+                margin: {
+                    right: 0;
+                }
+            }
+            img {
+                float: none;
+                margin: {
+                    right: 5px;
+                    bottom: 5px;
+                }
+            }
+            .text{
+                display: none;
+            }  
+        }
+    }
+}
+  
+  @mixin section-title-font($font-s:16px,$line-h:22px) {
+    font-weight: 700;
+    font-size: $font-s;
+    line-height: $line-h;
+    text-transform: uppercase;
+  }
+  
+  @mixin section-title-inside($margin-right: auto, $margin-left: 131px, $margin-bottom: 24px, $flag: true, $margin-top: 40px) {
+    @if $flag{
+      @include section-title-font($font-s:16px,$line-h:22px);
+    }
+    @else{
+      @include section-title-font($font-s:10px,$line-h:16px);
+    }
+    display: block;
+    margin: $margin-top $margin-right $margin-bottom $margin-left;
+    color: #4E4E4E;
+  }
+  
+  @mixin flex-center-row {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @mixin flex-photos-inside {
+    @include flex-center-row;
+    padding-bottom: 50px;
+    li:not(:first-child) {
+      margin-left: 10px;
+    }
+    img {
+      width: 228px;
+      height: 228px;
+    }
+  }
+  
+  @mixin circles-inside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 37px auto 34px auto;
+    .round {
+      width: 25px;
+      height: 25px;
+      border: 1px solid;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      &:first-child{
+        border-color: #F8902E;
+      }
+      &:nth-child(2){
+        border-color: #39599F;
+      }
+      &:nth-child(3){
+        border-color: #45B0E3;
+      }
+      &:nth-child(4){
+        border-color: #D97AB0;
+      }
+      &:nth-child(5){
+        border-color: #CC212C;
+      }
+    }
+  }
+  
+  @mixin photo-title-inside ($flag:true){
+    display: block; 
+    color: #4E4E4E;
+    @if $flag{
+      @include section-title-font($font-s:16px,$line-h:22px);
+    }
+    @else{
+      @include section-title-font($font-s:10px,$line-h:16px);
+    }
+  }
+

@@ -1,0 +1,268 @@
+
+@import "_reset.scss";
+@import "_mixins.scss";
+
+$font-stack: 'Roboto', sans-serif;
+$text-color: #4E4E4E;
+
+body {
+  font-family: $font-stack;
+}
+
+.container {
+  @include margin-center;
+  display: block;
+  width: 1200px;
+}
+
+.menu {
+  margin-top: 40px;
+  @include flex-center-row;
+  gap: 62px;
+  text-transform: uppercase;
+  font-size: 9px;
+  li{
+    color: $text-color;
+    &:hover{
+      color: #57A4A4;
+    }
+  }
+}
+
+.intro {
+  display: block;
+  margin: 46px auto 0 auto;
+  width: 938px;
+  height: 440px;
+  margin-bottom: 66px;
+}
+
+.grid {
+  @include grid-inside($flags:1)
+}
+
+.section-title-left {
+  @include section-title-inside($margin-right: auto, $margin-left: 131px, $flag: true)
+}
+
+.section-title-right {
+  @include section-title-inside($margin-right: 131px, $margin-left: 131px, $flag: true)
+}
+
+.section-title-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.photo-title {
+  @include photo-title-inside ($flag:true);
+}
+
+.text,
+.comments {
+  display: block;
+  font-weight: 400;
+  
+}
+
+.text{
+  font-size: 14px;
+  line-height: 26px;
+  color: #5C5C5C;
+}
+
+.comments {
+  font-size: 12px;
+  line-height: 20px;
+  color: #7C7C7C;
+}
+
+.grey-container {
+  display: block;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.flex-photos {
+  @include flex-photos-inside;
+}
+
+.footer {
+  background-color: #000;
+  @include section-title-font;
+  color: #fff;
+}
+
+.footer-text, 
+.footer-contacts, 
+.footer-title{
+  display: block;
+  text-align: center;
+}
+
+.footer-text, .footer-contacts{
+  @include margin-center;
+  width: 680px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: #B9B9B9;
+}
+
+.footer-title {
+  color: #FEFEFE;
+  padding-top: 57px;
+  margin-bottom: 22px;
+}
+
+.footer-contacts{
+  width: 650px;
+  color: #B9B9B9;
+  padding-bottom: 56px
+}
+
+.circles {
+  @include circles-inside;
+}
+
+@media (max-width: 768px) {
+  .container {
+    @include margin-center;
+    display: block;
+    width: 90%;
+  }
+  .flex-menu{
+    .black-square{
+      display: none;
+    }
+    .menu{
+      display: flex;
+    }
+  }
+  .flex-photos{
+    @include margin-center;
+    width: calc(100vw - 65px*2 - 10px*2);
+    li {
+      &:nth-child(4){
+        display: none;
+      }
+      img{
+        width: calc((100vw - 65px*2 - 10px*2)/3);
+        height: calc((100vw - 65px*2 - 10px*2)/3);
+      }
+    }
+  }
+  .intro{
+    width: 100%;
+    height: 30%;
+  }
+  .grid{
+    @include grid-inside($flags:2);
+  }
+  .section-title-right,
+  .section-title-left {
+    @include section-title-inside($margin-right: auto, $margin-left: auto, $flag: true)
+  }
+}
+
+@media (max-width: 320px) {
+  .body,
+  .comments{
+    font-size: 8px;
+  }
+  .flex-menu{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+  }
+  .black-square{
+      margin-top: 20px;
+      display: block;
+      cursor: pointer;
+      background-color: #000;
+      width: 30px;
+      height: 30px;
+      position: relative;
+      img{
+        position: absolute;
+        display: block;
+        width: 30px;
+        height: 30px;
+        top: 0;
+        left: 0;
+      }
+      .menu{
+        position: absolute;
+        top: 0;
+        right: 0;
+        gap: 0;
+        display: flex;
+        flex-direction: column;
+        li {
+          display: none;
+          line-height: 15px;
+          width: 30vw;
+          height: 15px;
+          padding-left: 5px;
+          background-color: #F5F5F5;
+          color: #4E4E4E;
+          &:hover{
+            background-color: #E5E5E5;
+          }
+        }
+      }
+    }
+  .container {
+    @include margin-center;
+    display: block;
+    width: 90%;
+  }
+  
+  .flex-photos{
+    @include margin-center;
+    padding: {
+      bottom: 10px;
+    }
+    li img{
+      width: calc(100vw - 10px - 20px);
+      height: 30%;
+    }
+  }
+
+  .intro{
+    margin: {
+      top: 20px;
+      bottom: 20px;
+    }
+    width: 100%;
+    height: 40%;
+  }
+
+  .grid {
+    @include grid-inside($flags:3);
+  }
+  .section-title-right {
+    display: none;
+  }
+  .section-title-left {
+    @include section-title-inside($margin-top: 18px, $margin-right: 0, $margin-left: 0, $margin-bottom: 10px, $flag: false);
+  }
+
+  .footer-title{
+    font-size: 12px;
+  }
+  .section-title-flex {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .photo-title {
+    @include photo-title-inside ($flag:false);
+  }
+  .flex-photos li:not(:first-child){
+    display: none;
+  }
+  .footer-text, 
+  .footer-contacts{
+    width: 80vw;
+    text-align: center;
+  }
+}
